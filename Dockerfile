@@ -12,8 +12,8 @@ MAINTAINER chvb
 RUN apt-get update -q
 RUN apt-get upgrade -qy
 RUN apt-get install lsof sysstat wget openssh-server supervisor -qy 
-RUN echo "wget -O kerio-connect-linux-64bit.deb http://download.kerio.com/dwn/kerio-connect-linux-64bit.deb" > dl.sh
-RUN echo "wget -O kerio-connect-linux-64bit.deb http://cdn.kerio.com/dwn/connect/connect-9.0.3-970/kerio-connect-9.0.3-970-linux-amd64.deb" > dl.sh
+#RUN echo "wget -O kerio-connect-linux-64bit.deb http://download.kerio.com/dwn/kerio-connect-linux-64bit.deb" > dl.sh
+RUN echo "wget -O kerio-connect-linux-64bit.deb http://cdn.kerio.com/dwn/connect/connect-9.0.1-394/kerio-connect-9.0.1-394-linux-amd64.deb" > dl.sh
 RUN chmod +x dl.sh 
 RUN ./dl.sh
 

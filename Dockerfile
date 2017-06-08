@@ -7,21 +7,23 @@ FROM ubuntu:14.04
 # File Author / Maintainer 
 MAINTAINER chvb
  
- 
-# Update the repository sources list 
-RUN apt-get update -q
-RUN apt-get upgrade -qy
-RUN apt-get install lsof sysstat wget openssh-server supervisor -qy 
-RUN echo "wget -O kerio-connect-linux-64bit.deb http://download.kerio.com/dwn/kerio-connect-linux-64bit.deb" > dl.sh
-#RUN echo "wget -O kerio-connect-linux-64bit.deb http://cdn.kerio.com/dwn/connect/connect-9.0.0-291/kerio-connect-9.0.0-291-linux-amd64.deb" > dl.sh
-RUN chmod +x dl.sh 
-RUN ./dl.sh
 
+## Install ##
+RUN apt-get update && apt-get install -y wget dnsutils resolvconf sysstat lsof openssh-server supervisor krb5-kdc krb5-admin-server && \
+    mv /etc/krb5.conf /opt/kerio && ln -sf /opt/kerio/krb5.conf /etc/krb5.conf
+RUN wget -O kerio-connect-linux-64bit.deb http://download.kerio.com/dwn/kerio-connect-linux-64bit.deb && \
+    dpkg -i kerio-connect-linux-64bit.deb && apt-get install -f && rm -f kerio-connect-linux-64bit.deb
+
+## Clean ##
+RUN apt-get clean && \
+    apt-get autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /build && \
+    rm -rf /tmp/* /var/tmp/* && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
 
 ################## BEGIN INSTALLATION #########################
-RUN dpkg -i kerio-connect-linux-64bit.deb
-RUN echo "/etc/init.d/kerio-connect stop" >> /kerio-restore.sh 
-RUN echo "/opt/kerio/mailserver/kmsrecover /backup/" >> /kerio-restore.sh 
 RUN mkdir -p /var/log/supervisord
 RUN mkdir -p /var/run/sshd
 RUN locale-gen en_US.utf8
@@ -39,7 +41,7 @@ RUN chmod +x /kerio-restore.sh
  
 VOLUME /backup
 VOLUME /mailserver/data 
-VOLUME /config
+VOLUME /opt/kerio
 
 # Set default container command
 ENTRYPOINT ["/usr/bin/supervisord"]

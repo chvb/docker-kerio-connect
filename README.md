@@ -51,3 +51,17 @@ If you need to change anything inside the Container, there is a SSH Server runni
 User docker 
 Passwort test123
 ```
+
+How to update ?
+
+yeah, you can remove kerio files/folders in your volume but keep this follow files/folder:
+
+*.cfg
+mailserver/store
+mailserver/dbSSL
+mailserver/license
+mailserver/settings
+mailserver/sslca
+mailserver/sslcert
+mailserver/ldapmap
+OK. when you pull new images and run. New container will copy new version files/folders of Kerio Connect to your volume but skip files/folders have your settings exists

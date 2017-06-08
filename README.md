@@ -64,5 +64,5 @@ mailserver/settings
 mailserver/sslca
 mailserver/sslcert
 mailserver/ldapmap
-
+ 
 OK. when you pull new images and run. New container will copy new version files/folders of Kerio Connect to your volume but skip files/folders have your settings exists

@@ -39,10 +39,30 @@ $ sudo docker run --name="kerio" \
 
 https://IP-FROM-DOCKER:4040
 
-If you need to change anything inside the Container, there is a SSH Server running with 
+Stop Kerio Service
 ```
-User docker 
-Passwort test123
+sudo service kerio-connect stop
+```
+
+
+
+### Restore Backup
+
+Log in SSH IP Port:4040
+
+Stop Kerio Service
+```
+sudo service kerio-connect stop
+```
+
+Start Recover
+```
+sudo /opt/kerio/mailserver/kmsrecover /backup
+```
+
+Start Kerio Service
+```
+sudo service kerio-connect start
 ```
 
 ### How to update?

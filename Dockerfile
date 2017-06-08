@@ -32,7 +32,6 @@ RUN echo docker:test123 | chpasswd
 ADD /etc/supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
 ADD /etc/init.d/kerio-connect /etc/init.d/kerio-connect 
 RUN chmod +x /etc/init.d/kerio-connect
-RUN chmod +x /kerio-restore.sh 
 ##################### INSTALLATION END #####################
 
 

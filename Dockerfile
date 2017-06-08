@@ -34,6 +34,8 @@ ADD /etc/init.d/kerio-connect /etc/init.d/kerio-connect
 RUN chmod +x /etc/init.d/kerio-connect
 ##################### INSTALLATION END #####################
 
+## Prepare start ##
+RUN mkdir /opt-start && mv /opt/kerio /opt-start
 
 # Expose the default portonly 4040 is nessecary for admin access 
  EXPOSE 4040 22 25 465 587 110 995 143 993 119 563 389 636 80 443 5222 5223 

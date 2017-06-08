@@ -31,6 +31,7 @@ $ sudo docker run --name="kerio" \
 -p 22:22 -p 25:25 -p 465:465 -p 587:587 -p 110:110 -p 995:995 \
 -p 143:143 -p 993:993 -p 119:119 -p 563:563 -p 389:389 -p 636:636 \
 -p 80:80 -p 443:443 -p 5222:5222 -p 5223:5223 \
+-v /#YOUR_KERIO_CONFIGFOLDER:/opt/kerio
 -v /#YOUR_KERIO_DATAFOLDER:/kerio_store
 -v /#YOUR_KERIO_BACKUP:/backup -t chvb/docker-kerio-connect 
 ```

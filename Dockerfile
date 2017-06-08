@@ -30,8 +30,8 @@ RUN locale-gen en_US.utf8
 RUN useradd docker -d /home/docker -g users -G sudo -m                                                                                                                    
 RUN echo docker:test123 | chpasswd
 ADD /etc/supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
-ADD /etc/init.d/kerio-connect /etc/init.d/kerio-connect 
-RUN chmod +x /etc/init.d/kerio-connect
+ADD /etc/init.d/kerio-connect.sh /etc/init.d/kerio-connect.sh
+RUN chmod +x /etc/init.d/kerio-connect.sh
 ##################### INSTALLATION END #####################
 
 ## Prepare start ##

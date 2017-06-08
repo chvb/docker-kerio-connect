@@ -15,13 +15,6 @@ Get latest build from Docker:
 docker pull chvb/docker-kerio-connect:latest
 ```
 
-If you want to run Kerio inside Synology-Docker use this [Container qualified for Synology NAS ]:
-
-```bash
-docker pull chvb/docker-kerio-connect:Synology
-```
-
-
 Or build it by yourself:
 
 ```bash

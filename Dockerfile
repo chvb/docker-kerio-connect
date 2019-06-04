@@ -1,5 +1,6 @@
 ## Set the base image to Ubuntu ##
 FROM ubuntu:14.04
+ARG DEBIAN_FRONTEND=noninteractive
  
 ## File Author / Maintainer ##
 MAINTAINER chvb
